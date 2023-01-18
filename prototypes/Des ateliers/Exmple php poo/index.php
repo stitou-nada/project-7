@@ -8,36 +8,61 @@ abstract class Personne {
 
 // enfant
 class Formateur extends Personne{
-    public function addItems($Nom){
-        $this->Nom=$Nom;
-        return $Nom;
-    }
+   public function addItems($Nom ,$Prenom){
+    $this->Nom = $Nom;
+    $this->Prenom = $Prenom;
+    return [$Nom,$Prenom ,"is a Formateur"];   
+}  
     
 }
 class Stagiaire extends Personne{
-    public function addItems($Nom){
-        $this->Nom=$Nom;
-
-    }
+   public function addItems($Nom, $Prenom ){
+        $this->Nom = $Nom;
+        $this->Prenom = $Prenom;
+        return [$Nom,$Prenom ,"is a stagiaire"];    
+    }  
 }
 
-interface  Gestion {
-    public function ajouter($Nom);     
-    // public function suprimmer($Nom);      
+interface Gestion   {
+    
+    public function Ajouter($data);
+    public function Supprimer($data);
+    public function afficherData();
+
+}
+class IGestion implements Gestion  {
+   public  $listData = array();
+    public function Ajouter($data)
+   {
+      $_data= implode(" ", $data);
+       array_push($this->listData,$_data);
+   }
+   public function afficherData(){
+       $data =  $this->listData;
+       foreach($data as $value){
+           echo $value .'<br>';
+        }
+        echo "total Person : ". count($data);
+   }
+   public function Supprimer($data){
+    $_data= implode(" ", $data);
+  $arraySearch= array_search($_data,$this->listData);
+  \array_splice($this->listData,$arraySearch,1);
 }
 
-class  Igestion implements Gestion {
 
-    public function ajouter($Nom){
-          
-         echo $Nom;
-    }
 }
 
-$formateur = new Formateur();
-// $stagiaire = new Stagiaire();
-$gestion = new Igestion();
-$ajouterFormateur =$formateur->addItems("nada");
-$ajouter =$gestion->ajouter($ajouterFormateur);
+$formateur = new Formateur;
+$Stagiaire = new Stagiaire;
+$Gestion = new IGestion;
+$AddFormateur =  $formateur->addItems('boutaina',"el harrak");
+$AddStagiaire =  $Stagiaire->addItems('nada',"stitou");
+$AddStagiaire1 =  $Stagiaire->addItems('hicham',"mliki");
+$Gestion->Ajouter($AddFormateur);
+$Gestion->Ajouter($AddStagiaire);
+$Gestion->Ajouter($AddStagiaire1);
+$Gestion->Supprimer($AddStagiaire1);
+$Gestion->afficherData();
 
 ?>
