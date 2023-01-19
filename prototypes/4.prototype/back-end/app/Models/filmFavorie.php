@@ -5,13 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cenima extends Model
+class filmFavorie extends Model
 {
     use HasFactory;
-    protected $table= "cenima";
+    protected $table= "film_favorie";
     public $timestamps = false;
     protected $fillable=[
-        'name',
+        'idTitre',
+        'image',
+        'titre',
+        'saison',
+        'acteur',
+        'annee'
 
     ];
 }

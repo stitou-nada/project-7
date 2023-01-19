@@ -13,9 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cenima', function (Blueprint $table) {
+        Schema::create('film_favorie', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('idFilm')->nullable();
+            $table->string('image')->nullable();
+            $table->string('titre')->nullable();
+            $table->string('saison')->nullable();
+            $table->string('acteur')->nullable();
+            $table->string('annee')->nullable();
             $table->timestamps();
         });
     }
