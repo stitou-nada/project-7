@@ -8,24 +8,18 @@ import React from 'react';
 class App extends React.Component {
 
   state={
-    Nom : "",
-    message:[]
+    
   }
 
 componentDidMount(){
+  
   const options = {
     method: 'GET',
-    url: 'https://netflix54.p.rapidapi.com/search/',
-    params: {
-      query: 'stranger',
-      offset: '0',
-      limit_titles: '50',
-      limit_suggestions: '20',
-      lang: 'en'
-    },
+    url: 'https://imdb8.p.rapidapi.com/title/get-top-crew',
+    params: {tconst: 'tt0944947'},
     headers: {
       'X-RapidAPI-Key': '4792ad20efmshfe5f03d37dd0ae1p1edcadjsn8d027e55db5f',
-      'X-RapidAPI-Host': 'netflix54.p.rapidapi.com'
+      'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
     }
   };
   
