@@ -12,7 +12,10 @@ class movieController extends Controller
     {
     $store = new filmFavorie();
         $store->titre = $request->titre;
-        $store->name = $request->name;
+        $store->saison = $request->saison;
+        $store->acteur = $request->acteur;
+        $store->annee = $request->annee;
+        $store->image = $request->image;
         $store->save();
     }
 

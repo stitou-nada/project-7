@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('film_favorie', function (Blueprint $table) {
             $table->id();
-            $table->string('idFilm')->nullable();
             $table->string('image')->nullable();
             $table->string('titre')->nullable();
             $table->string('saison')->nullable();

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\movieController;
 use App\Http\Controllers\stagiaireController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
