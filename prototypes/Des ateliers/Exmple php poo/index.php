@@ -8,7 +8,7 @@ abstract class Personne {
 
 // enfant
 class Formateur extends Personne{
-   public function addItems($Nom ,$Prenom){
+   public function presentation($Nom ,$Prenom){
     $this->Nom = $Nom;
     $this->Prenom = $Prenom;
     return [$Nom,$Prenom ,"is a Formateur"];   
@@ -16,29 +16,29 @@ class Formateur extends Personne{
     
 }
 class Stagiaire extends Personne{
-   public function addItems($Nom, $Prenom ){
+   public function presentation($Nom, $Prenom ){
         $this->Nom = $Nom;
         $this->Prenom = $Prenom;
         return [$Nom,$Prenom ,"is a stagiaire"];    
     }  
 }
 
-interface IGestion   {
+interface IGestionPerson   {
     
     public function Ajouter($data);
     public function Supprimer($data);
     public function afficherData();
 
 }
-class Gestion implements IGestion  {
-   public  $listData = array();
+class GestionPerson implements IGestionPerson  {
+   public  $list = array();
     public function Ajouter($data)
    {
       $_data= implode(" ", $data);
-       array_push($this->listData,$_data);
+       array_push($this->list,$_data);
    }
    public function afficherData(){
-       $data =  $this->listData;
+       $data =  $this->list;
        foreach($data as $value){
            echo $value .'<br>';
         }
@@ -46,8 +46,8 @@ class Gestion implements IGestion  {
    }
    public function Supprimer($data){
     $_data= implode(" ", $data);
-  $arraySearch= array_search($_data,$this->listData);
-  \array_splice($this->listData,$arraySearch,1);
+  $arraySearch= array_search($_data,$this->list);
+  \array_splice($this->list,$arraySearch,1);
 }
 
 
@@ -55,10 +55,10 @@ class Gestion implements IGestion  {
 
 $formateur = new Formateur;
 $Stagiaire = new Stagiaire;
-$Gestion = new Gestion;
-$AddFormateur =  $formateur->addItems('boutaina',"el harrak");
-$AddStagiaire =  $Stagiaire->addItems('nada',"stitou");
-$AddStagiaire1 =  $Stagiaire->addItems('hicham',"mliki");
+$Gestion = new GestionPerson;
+$AddFormateur =  $formateur->presentation('boutaina',"el harrak");
+$AddStagiaire =  $Stagiaire->presentation('nada',"stitou");
+$AddStagiaire1 =  $Stagiaire->presentation('hicham',"mliki");
 $Gestion->Ajouter($AddFormateur);
 $Gestion->Ajouter($AddStagiaire);
 $Gestion->Ajouter($AddStagiaire1);
