@@ -63,12 +63,43 @@ class Film extends React.Component {
       .catch(err => console.error(err));
   }
   
-  handeFavorit=(titre)=>{
-    const Titre ={'titre': titre}
-   axios.post("http://127.0.0.1:8000/api/store",Titre)
-   .then(res=>{
-    console.log('ddd')
-   })
+  handeFavorit=(id)=>{
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': '4792ad20efmshfe5f03d37dd0ae1p1edcadjsn8d027e55db5f',
+        'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
+      }
+    };
+    console.log(id)
+    fetch('https://imdb8.p.rapidapi.com/auto-complete?q='+id, options)
+    .then(response => response.json())
+    .then(response => {
+      console.log(response.d[0])
+      axios.post("http://127.0.0.1:8000/api/store", response.d[0])
+      .then(res=>{
+      console.log('dd')
+    })
+     
+     
+  
+      //img
+      console.log(response.d[0].i)
+      axios.post("http://127.0.0.1:8000/api/store", response.d[0].i)
+      .then(res=>{
+      console.log('dd')
+    })
+     
+  }
+   
+      )
+    .catch(err => console.error(err));
+    
+    // 
+    // axios.post("http://127.0.0.1:8000/api/store",Titre)
+    // .then(res=>{
+    //  console.log('ddd')
+    // })
   }
   handleChange=(e)=>{
     this.setState({
@@ -86,7 +117,7 @@ class Film extends React.Component {
         <div>
                  <p> {value.l} </p>
                  <p><img width={200} src={value.i.imageUrl}></img></p>
-                 <button onClick={()=>this.handeFavorit(value.l)} className="fa">+</button>
+                 <button onClick={()=>this.handeFavorit(value.id)} className="fa">+</button>
         </div>
         )}
       </div>

@@ -22,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post('store',[movieController::class,'store']);
+Route::get('favorit',[movieController::class,'FavoritList']);
