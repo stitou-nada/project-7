@@ -22,7 +22,7 @@ class Favorie extends React.Component{
             <div>
                 {this.state.listFavorit.map(value=>
                <div>
-               <li>{value.titre} </li>
+               <p> {value.l} </p>
                <p><img width={200} src={value.i.imageUrl}></img></p>
                </div>
             )}

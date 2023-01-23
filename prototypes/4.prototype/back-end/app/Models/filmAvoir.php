@@ -5,18 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class filmFavorie extends Model
+class filmAvoir extends Model
 {
     use HasFactory;
-    protected $table= "film_favorie";
+    protected $table= "film_avoir";
     public $timestamps = false;
     protected $fillable=[
-        'idTitre',
+        'id',
         'image',
         'titre',
-        'saison',
-        'acteur',
-        'annee'
+        'moyenne_vote',
+        'date',
+        'description',
+        'type'
 
     ];
 }
