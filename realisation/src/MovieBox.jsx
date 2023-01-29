@@ -1,18 +1,14 @@
 import { Modal,show,Button} from 'react-bootstrap';
 import React, { useState } from "react";
 import axios from 'axios';
+import { useEffect } from 'react';
 
 const API_IMG="https://image.tmdb.org/t/p/w500/";
 const MovieBox =({titel, poster_path, vote_average, release_date, overview ,id})=>{
     const [show, setShow]=useState(false);
     const handleShow=()=>setShow(true);
     const handleClose=()=>setShow(false);
-    const Avoir=(id)=>{
-        var select = document.getElementById("select");
-        var btn = document.getElementById("btn");
-        select.style.display='inline';
-        btn.style.display='none';
-    }
+   
     const selectType=(e)=>{
           console.log(e.target.value)
           console.log(id)
@@ -27,6 +23,33 @@ const MovieBox =({titel, poster_path, vote_average, release_date, overview ,id})
                )
             })
     }
+
+    const handleDelete=()=>{
+           console.log(id)
+         
+    }
+    useEffect(() => {
+        axios.get('http://localhost:8000/api/ExisteMovie/'+id)
+        .then(res=>{
+          console.log(res.data)
+
+
+          if(res.data.message== "true"){
+            const btnRemove = document.getElementById("delete")
+            btnRemove.style.display='inline'
+          }
+          else{
+          const btnAdd = document.getElementById("select")
+          btnAdd.style.display='inline'
+          console.log('err')
+        }
+        //   setLeague(res.data);
+        }
+        )
+    
+      
+    }, [])
+    
     
    return(
     <div className="card text-center bg-secondary mb-3">
@@ -34,8 +57,9 @@ const MovieBox =({titel, poster_path, vote_average, release_date, overview ,id})
             <img className="card-img-top" src={API_IMG+poster_path} />
             <div className="card-body">
             <button type="button" className="btn btn-dark" onClick={handleShow}>View More</button>
-            <select onChange={selectType} id="select" >
-             <option disabled selected value>  Add to favorie  </option>
+            <button type="button" className="btn btn-danger" id='delete' style={{display:'none'}} onClick={handleDelete}>-</button>
+            <select onChange={selectType} id="select" style={{display:'none'}}>
+             <option disabled selected value>  Ajouter   </option>
                 <option value="Familier">Familier</option>
                 <option value="Enfant">Enfant</option>
                 <option value="Personel">Personel</option>

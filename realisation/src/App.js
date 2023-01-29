@@ -17,11 +17,16 @@ function App(){
   const [avoirList, setAvoirList]=useState([]);
   const [query, setQuery]=useState('');
 useEffect(()=>{
+   if(document.URL== "http://localhost:3000/avoir"){
+      const select= document.getElementById('test')
+      select.style.display= 'inline'
+  }
   fetch(API_URL)
   .then((res)=>res.json())
   .then(data=>{
     // console.log(data);
     setMovies(data.results);
+    
   })
   fetch("http://127.0.0.1:8000/api/ListAvoir")
   .then((res)=>res.json())
@@ -82,8 +87,10 @@ const changeHandler=(e)=>{
     </Navbar>
     <div>
     <div>
+      
+      
         {/* <button type="button" className="btn btn-dark" id='btn' onClick={()=>Avoir(id)}>select</button> */}
-            <select onChange={selectType} >
+            <select id="test" style={{display:'none'}} onChange={selectType} >
             <option disabled selected value>  selectione type </option>
                 <option value="Familier">Familier</option>
                 <option value="Enfant">Enfant</option>
