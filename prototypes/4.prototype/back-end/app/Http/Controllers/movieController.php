@@ -21,12 +21,16 @@ class movieController extends Controller
         $store->type = $request->type;
         $store->save();
     }
-    public function FavoritList(){
+    public function ListAvoir(){
 
         $list = filmAvoir::all();
         return $list;
     }
+    public function select($type){
 
+        $select = filmAvoir::where('type' , $type )->get();
+        return $select;
+    }
 
 
 
