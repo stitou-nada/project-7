@@ -56,7 +56,7 @@ const MovieBox =({titel, poster_path, vote_average, release_date, overview ,id})
         <div className="card-body">
             <img className="card-img-top" src={API_IMG+poster_path} />
             <div className="card-body">
-            <button type="button" className="btn btn-dark" onClick={handleShow}>View More</button>
+            <button type="button" className="btn btn-dark" onClick={handleShow}>Détail</button>
             {/* <button type="button" className="btn btn-danger" id='delete' style={{display:'none'}} onClick={handleDelete}>-</button> */}
             <select onChange={selectType}  className="btn btn-warning selectAvoire" id="select">
              <option disabled selected value>  Ajouter dans liste avoir  </option>

@@ -26,7 +26,7 @@ return(
     <div className="card-body">
         <img className="card-img-top" src={API_IMG+image} />
         <div className="card-body">
-        <button type="button" className="btn btn-dark" onClick={handleShow}>View More</button>
+        <button type="button" className="btn btn-dark" onClick={handleShow}>Détail</button>
          <button type="button" className="btn btn-danger" id='delete' onClick={handleDelete}>-</button>
         <Modal  show={show} onHide={handleClose}>
         <Modal.Header closeButton>
