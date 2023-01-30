@@ -67,7 +67,7 @@ const changeHandler=(e)=>{
     <>
     <Navbar  bg="dark" expand="lg" variant="dark">
       <Container fuild>
-        <NavbarBrand href="/">MovieDb</NavbarBrand>
+        <NavbarBrand href="/">Acueil</NavbarBrand>
         <NavbarBrand href="/avoir">Avoir</NavbarBrand>
         <NavbarToggle aria-controls="navbarScroll"></NavbarToggle>
         <NavbarCollapse id="nabarScroll">
@@ -80,17 +80,17 @@ const changeHandler=(e)=>{
               aria-label="search"
               name="query"
               value={query} onChange={changeHandler}></FormControl>
-               <Button variant="secondary" type="submit">Search</Button>
+               <Button variant="secondary" type="submit">Rechercher</Button>
           </Form>
         </NavbarCollapse>
       </Container>
     </Navbar>
     <div>
-    <div>
+    <div className='select'>
       
       
         {/* <button type="button" className="btn btn-dark" id='btn' onClick={()=>Avoir(id)}>select</button> */}
-            <select id="test" style={{display:'none'}} onChange={selectType} >
+            <select id="test" style={{display:'none'}} onChange={selectType} className="btn btn-warning " >
             <option disabled selected value>  selectione type </option>
                 <option value="Familier">Familier</option>
                 <option value="Enfant">Enfant</option>

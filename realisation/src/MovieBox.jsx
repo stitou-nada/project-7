@@ -28,27 +28,27 @@ const MovieBox =({titel, poster_path, vote_average, release_date, overview ,id})
            console.log(id)
          
     }
-    useEffect(() => {
-        axios.get('http://localhost:8000/api/ExisteMovie/'+id)
-        .then(res=>{
-          console.log(res.data)
+    // useEffect(() => {
+    //     axios.get('http://localhost:8000/api/ExisteMovie/'+id)
+    //     .then(res=>{
+    //       console.log(res.data)
 
 
-          if(res.data.message== "true"){
-            const btnRemove = document.getElementById("delete")
-            btnRemove.style.display='inline'
-          }
-          else{
-          const btnAdd = document.getElementById("select")
-          btnAdd.style.display='inline'
-          console.log('err')
-        }
-        //   setLeague(res.data);
-        }
-        )
+    //       if(res.data.message== "true"){
+    //         const btnRemove = document.getElementById("delete")
+    //         btnRemove.style.display='inline'
+    //       }
+    //       else{
+    //       const btnAdd = document.getElementById("select")
+    //       btnAdd.style.display='inline'
+    //       console.log('err')
+    //     }
+    //     //   setLeague(res.data);
+    //     }
+    //     )
     
       
-    }, [])
+    // }, [])
     
     
    return(
@@ -57,9 +57,9 @@ const MovieBox =({titel, poster_path, vote_average, release_date, overview ,id})
             <img className="card-img-top" src={API_IMG+poster_path} />
             <div className="card-body">
             <button type="button" className="btn btn-dark" onClick={handleShow}>View More</button>
-            <button type="button" className="btn btn-danger" id='delete' style={{display:'none'}} onClick={handleDelete}>-</button>
-            <select onChange={selectType} id="select" style={{display:'none'}}>
-             <option disabled selected value>  Ajouter   </option>
+            {/* <button type="button" className="btn btn-danger" id='delete' style={{display:'none'}} onClick={handleDelete}>-</button> */}
+            <select onChange={selectType}  className="btn btn-warning selectAvoire" id="select">
+             <option disabled selected value>  Ajouter dans liste avoir  </option>
                 <option value="Familier">Familier</option>
                 <option value="Enfant">Enfant</option>
                 <option value="Personel">Personel</option>

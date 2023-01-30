@@ -25,3 +25,4 @@ Route::post('store',[movieController::class,'store']);
 Route::get('ListAvoir',[movieController::class,'ListAvoir']);
 Route::get('select/{type}',[movieController::class,'select']);
 Route::get('ExisteMovie/{id}',[movieController::class,'ExisteMovie']);
+Route::get('delete/{id}',[movieController::class,'delete']);

@@ -32,14 +32,21 @@ class movieController extends Controller
         return $select;
     }
 
-   public function ExisteMovie($id){
-    $list = filmAvoir::where("id",$id)->get();
+    public function ExisteMovie($id){
+        $list = filmAvoir::where("id",$id)->get();
         if(!empty($list[0])){
             return ['message'=>"true"];
         }else{
             return ['message'=>"false"];
 
         }
-   }
+    }
+    public function delete($id){
+
+        filmAvoir::where('id',$id)->delete();
+        // $list = filmAvoir::select("*")->get();
+
+        // return $list;
+    }
 
 }

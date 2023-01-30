@@ -13,7 +13,15 @@ body{
 .container{
   width: 100%;
   margin: 1em auto;
-  background-color: darkslategray;
+  
+}
+.selectAvoire{
+  margin-top: 12px;
+}
+.select{
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-around;
 }
 
 .grid{
